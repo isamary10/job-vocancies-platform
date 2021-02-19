@@ -1,7 +1,11 @@
 class CompaniesController < ApplicationController
 
   def index
-    #@company = Company.all
+    @companies = Company.all
+  end
+
+  def show
+    @company = Company.find(params[:id])
   end
 
   def new
@@ -15,7 +19,7 @@ class CompaniesController < ApplicationController
                                                       :site, :about_the_company)
     @company = Company.new(company_params)
     if @company.save
-      redirect_to companies_path
+      redirect_to company_path(@company)
     else
       render new
     end
