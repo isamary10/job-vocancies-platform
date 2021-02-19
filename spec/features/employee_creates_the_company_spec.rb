@@ -20,7 +20,6 @@ feature 'Employee creates the company' do
     fill_in 'Sobre a empresa', with: 'Nossa missão é ajudar as pessoas a ver '\
                                     'dados de novas maneiras, descobrir ideias '\
                                     'e desbloquear infinitas possibilidades.'
-    #attach_file 'Imagem', '/caminho/para/imagem.jpg'
 
     click_on 'Salvar'
 
@@ -37,6 +36,31 @@ feature 'Employee creates the company' do
     expect(page).to have_content('Nossa missão é ajudar as pessoas a ver '\
                                 'dados de novas maneiras, descobrir ideias '\
                                 'e desbloquear infinitas possibilidades.')
-    #expect(page).to have_link(voltar)
+  end
+
+  scenario 'and required fields cannot be blank' do
+    visit root_path
+    click_on 'Nova Empresa'
+
+    fill_in 'Razão Social', with: ''
+      fill_in 'CNPJ', with: ''
+      fill_in 'CEP', with: ''
+      fill_in 'Endereço', with: ''
+      fill_in 'Bairro', with: ''
+      fill_in 'Cidade', with: ''
+      fill_in 'Estado', with: '' 
+      fill_in 'Sobre a empresa', with: ''
+  
+      click_on 'Salvar'
+
+      expect(page).to have_content('Não foi possível criar a empresa')
+      expect(page).to have_content('Razão Social não pode ficar em branco')
+      expect(page).to have_content('CNPJ não pode ficar em branco')
+      expect(page).to have_content('CEP não pode ficar em branco')
+      expect(page).to have_content('Endereço não pode ficar em branco')
+      expect(page).to have_content('Bairro não pode ficar em branco')
+      expect(page).to have_content('Cidade não pode ficar em branco')
+      expect(page).to have_content('Estado não pode ficar em branco')
+      expect(page).to have_content('Sobre a empresa não pode ficar em branco')
   end
 end

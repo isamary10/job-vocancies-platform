@@ -1,0 +1,17 @@
+pt-BR:
+  activerecord:
+    models:
+      company: 
+        one: Empresa
+        other: Empresas
+    attributes:
+      company:
+        company_name: "Razão Social"
+        cnpj: "CNPJ"
+        zip_code: "CEP"
+        address: "Endereço"
+        district: "Bairro"
+        city: "Cidade"
+        state: "Estado"
+        about_the_company: "Sobre a empresa"
+      

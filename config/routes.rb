@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   root 'home#index'
-  resources :companies, only: %i[index show new create]
+  resources :companies, only: %i[show new create]
 end
